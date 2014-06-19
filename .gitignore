@@ -16,4 +16,4 @@
 /tmp
 
 # Ignore application keys
-application_keys.yml
+/config/application.yml
