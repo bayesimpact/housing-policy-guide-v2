@@ -1,12 +1,29 @@
 <div class='container admin'>
   <% if !@resources.empty? %>
     <div class='row'>
-      <div class='col-sm-12'>
+      <table class='table'>
+        <th>Name</th>
+        <th>Summary</th>
+        <th>Description</th>
+        <th>Organization Text</th>
+        <th>Resources Text</th>
+        <th></th>
         <% @resources.each do |resource| %>
+          <tr>
+            <td><%= truncate resource.name %></td>
+            <td><%= truncate resource.summary, length: 60 %></td>
+            <td><%= truncate resource.description, length: 60  %></td>
+            <td><%= truncate resource.organization_text, length: 60  %></td>
+            <td><%= truncate resource.resources_text, length: 60  %></td>
+            <td>
+              <%= link_to 'Details', admin_policy_path(resource.id) %>
+              <%= link_to 'Edit', edit_admin_policy_path(resource.id) %>
+              <%= link_to 'Delete', admin_policy_path(resource.id), method: 'Delete' %>
+            </td>
+          </tr>
         <% end %>
-      </div>
+      </table>
     </div>
-  <% else %>
-    Create your <%= link_to 'first policy', new_admin_policy_path %>.
   <% end %>
+  Create <%= link_to 'a policy', new_admin_policy_path %>.
 </div>

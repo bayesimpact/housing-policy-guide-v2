@@ -1,0 +1,42 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h2><%= @policy.name %></h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Summary</h3>
+      <%= @policy.summary %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Description</h3>
+      <%= @policy.description %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Organization Text</h3>
+      <%= @policy.organization_text %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Resource Text</h3>
+      <%= @policy.resources_text %>
+    </div>
+  </div>
+  <br/>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h4> <%= link_to 'Edit', edit_admin_policy_path(@policy.id) %> | <%= link_to 'Delete', admin_policy_path(@policy.id), method: 'Delete' %> </h4>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3><%= link_to 'All Policies', admin_policies_path %></h3>
+    </div>
+  </div>
+</div>
