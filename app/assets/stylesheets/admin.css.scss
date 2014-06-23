@@ -1,0 +1,23 @@
+
+#admin-navigation {
+  height: 20px;
+  margin: 0;
+
+  ul {
+    list-style: none;
+    display: inline-block;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 0 0 15px;
+  }
+
+  .admin-links {
+    float: right;
+  }
+}
+
+.container.admin {
+  margin-top: 10px;
+}

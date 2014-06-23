@@ -1,0 +1,33 @@
+#home-page-hero {
+  background: image-url('http://civinomics.files.wordpress.com/2014/01/san-francisco-fly-to-barcelona.jpg') 0% 0%;
+  position: relative;
+  height: 100%;
+
+  .darkener {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+
+  h1, p {
+    color: white;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    margin: 25% 0 20px;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
+
+  a {
+    color: white;
+  }
+}

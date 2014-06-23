@@ -1,0 +1,12 @@
+<div class='container admin'>
+  <% if !@resources.empty? %>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <% @resources.each do |resource| %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    Create your <%= link_to 'first policy', new_admin_policy_path %>.
+  <% end %>
+</div>
