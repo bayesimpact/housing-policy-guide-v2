@@ -15,7 +15,7 @@
             <td><%= truncate resource.description, length: 60  %></td>
             <td><%= truncate resource.organization_text, length: 60  %></td>
             <td><%= truncate resource.resources_text, length: 60  %></td>
-            <td>
+            <td data-no-turbolink>
               <%= link_to 'Details', admin_policy_path(resource.id) %>
               <%= link_to 'Edit', edit_admin_policy_path(resource.id) %>
               <%= link_to 'Delete', admin_policy_path(resource.id), method: 'Delete' %>

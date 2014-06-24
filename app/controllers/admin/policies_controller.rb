@@ -50,6 +50,6 @@ class Admin::PoliciesController < AdminController
   private
 
   def policy_params
-    params.require(:policy).permit(:name, :summary, :description, :organization_text, :resources_text)
+    params.require(:policy).permit(:name, :summary, :description, :organization_text, :resources_text, :thumbnail_image_url, :masthead_image_url)
   end
 end

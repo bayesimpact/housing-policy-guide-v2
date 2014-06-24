@@ -1,7 +1,21 @@
 <div class='container'>
   <div class='row'>
     <div class='col-sm-12'>
+      <h4>Masthead:</h4>
+      <%= filepicker_image_tag @policy.masthead_image_url %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-2'>
+      <%= filepicker_image_tag @policy.thumbnail_image_url %>
+    </div>
+    <div class='col-sm-10'>
       <h2><%= @policy.name %></h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+
     </div>
   </div>
   <div class='row'>
@@ -30,7 +44,7 @@
   </div>
   <br/>
   <div class='row'>
-    <div class='col-sm-12'>
+    <div class='col-sm-12' data-no-turbolink>
       <h4> <%= link_to 'Edit', edit_admin_policy_path(@policy.id) %> | <%= link_to 'Delete', admin_policy_path(@policy.id), method: 'Delete' %> </h4>
     </div>
   </div>

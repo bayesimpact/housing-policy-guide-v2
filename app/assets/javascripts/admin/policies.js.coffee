@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+updateImageOnUpload = ->
+  $('input[type=filepicker]').on 'change', (event) ->
+    imagePreviewContainer = $(event.currentTarget).siblings('.image-preview')
+    imageUrl = event.originalEvent.fpfiles[0].url
+    imageClippedUrl = imageUrl + '/convert?fit=clip&h=160&w=160'
+    imagePreviewContainer.html('<img src="' + imageClippedUrl + '">')
+    $('input[type=submit]').attr('value', 'Save (images not yet saved)')
+
+$ ->
+  updateImageOnUpload()
