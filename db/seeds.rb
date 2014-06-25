@@ -30,7 +30,7 @@ super_group_2 = DataGroup.create(name: 'Super Group 2')
   DataGroup.create(name: group_name, parent: super_group_2)
 end
 
-['Dataset #1', 'Dataset #2', 'Dataset #3', 'Dataset #4'].each do |dataset_name|
+['Dataset #1', 'Dataset #2', 'Dataset #3', 'Dataset #4', 'Dataset #5', 'Dataset #6', 'Dataset #7', 'Dataset #8'].each do |dataset_name|
   Dataset.create({
     name: dataset_name,
     source_description: 'Squid Brooklyn ethical banjo Schlitz, ugh Thundercats cliche asymmetrical church-key. PBR&B literally umami, brunch Brooklyn art party stumptown YOLO messenger bag blog. Four loko plaid chillwave salvia mumblecore Austin ugh, bitters organic pour-over cliche locavore aesthetic tofu biodiesel. Umami iPhone ethical wolf, Pitchfork Cosby sweater quinoa Intelligentsia asymmetrical Tumblr Shoreditch Vice food truck Austin kitsch. Fingerstache YOLO cray quinoa Odd Future ugh letterpress. Cray actually Austin sartorial swag freegan. Brooklyn ethnic slow-carb mustache yr sustainable.',
@@ -38,4 +38,8 @@ end
     source_url: "test",
     visualization_iframe: '<iframe height=520 width=810 src="//docs.google.com/spreadsheets/d/1SYYqoBNysyyUc2M6XCeY0vuh_ot-hYhqsMAN1DdudBE/gviz/chartiframe?oid=2030283485" seamless frameborder=0 scrolling=no></iframe>'
   })
+end
+
+Dataset.all.each_with_index do |dataset, index|
+  DataGroup.with_parents[index].datasets << dataset
 end
