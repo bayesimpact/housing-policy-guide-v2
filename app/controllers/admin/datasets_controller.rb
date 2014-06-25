@@ -10,4 +10,8 @@ class Admin::DatasetsController < ApplicationController
   def edit
     @dataset = Dataset.find(params[:id])
   end
+
+  def show
+    @dataset = Dataset.find(params[:id])
+  end
 end

@@ -1,0 +1,42 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-10'>
+      <h2><%= @dataset.name %></h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Source Description</h3>
+      <%= @dataset.source_description %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Notes</h3>
+      <%= @dataset.notes %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Source Url</h3>
+      <%= link_to @dataset.source_url, @dataset.source_url, target: '_blank' %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Visualization iframe string</h3>
+      <%= @dataset.visualization_iframe %>
+    </div>
+  </div>
+  <%= @dataset.visualization_iframe.html_safe if @dataset.visualization_iframe %>
+  <div class='row'>
+    <div class='col-sm-12' data-no-turbolink>
+      <h4> <%= link_to 'Edit', edit_admin_dataset_path(@dataset.id) %> | <%= link_to 'Delete', admin_dataset_path(@dataset.id), method: 'Delete' %> </h4>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3><%= link_to 'All Datasets', admin_datasets_path %></h3>
+    </div>
+  </div>
+</div>
