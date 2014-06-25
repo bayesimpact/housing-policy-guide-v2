@@ -1,3 +1,49 @@
-// Place all the styles related to the Policies controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#policies-masthead {
+  background: #333 image-url('ggb_at_dusk.jpg') 50% 50% no-repeat;
+  height: 400px;
+  color: white;
+  margin-bottom: 30px;
+
+  .container {
+    height: 100%;
+    position: relative;
+    z-index: 3;
+  }
+
+  h2 {
+    position: absolute;
+    bottom: 20px;
+  }
+}
+
+#masthead {
+  height: 400px;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  vertical-align: bottom;
+
+  .container {
+    height: 100%;
+  }
+
+  .row {
+    position: absolute;
+    bottom: 20px;
+  }
+
+  .thumbnail {
+    height: 80px;
+    width: 80px;
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .name {
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    text-shadow: 0 0 5px 0 #ccc;
+  }
+}

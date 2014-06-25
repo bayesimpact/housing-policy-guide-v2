@@ -1,0 +1,10 @@
+<div class='container admin'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <%= form_for @dataset, url: admin_datasets_path, html: { role: 'form', class: 'form-horizontal' } do |f| %>
+        <%= render partial: 'form', locals: { f: f, dataset: @dataset } %>
+        <%= f.submit 'Create', class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  </div>
+</div>

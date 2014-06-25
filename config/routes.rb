@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :admins
+
+  devise_scope :admin do
+    get "/login", to: "devise/sessions#new"
+  end
+
   get '/about', to: 'welcome#about'
   get '/data', to: 'datasets#index'
 

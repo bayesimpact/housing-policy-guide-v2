@@ -1,0 +1,29 @@
+<div class='container admin'>
+  <% if !@resources.empty? %>
+    <div class='row'>
+      <table class='table'>
+        <th>Name</th>
+        <th>Source Description</th>
+        <th>Notes</th>
+        <th>Visualization iFrame</th>
+        <th>Source Url</th>
+        <th></th>
+        <% @resources.each do |resource| %>
+          <tr>
+            <td><%= truncate resource.name %></td>
+            <td><%= truncate resource.source_description, length: 60 %></td>
+            <td><%= truncate resource.notes, length: 60  %></td>
+            <td><%= truncate resource.visualization_iframe, length: 60  %></td>
+            <td><%= truncate resource.source_url, length: 60  %></td>
+            <td data-no-turbolink>
+              <%= link_to 'Details', admin_dataset_path(resource.id) %>
+              <%= link_to 'Edit', edit_admin_dataset_path(resource.id) %>
+              <%= link_to 'Delete', admin_dataset_path(resource.id), method: 'Delete' %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+  Create <%= link_to 'a dataset', new_admin_dataset_path %>.
+</div>

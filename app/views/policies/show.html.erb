@@ -1,0 +1,51 @@
+<div class='container-fluid' id='masthead' style='background-image: url(<%= @policy.masthead_image_url %>)'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <div class='thumbnail'>
+          <%= filepicker_image_tag @policy.thumbnail_image_url %>
+        </div>
+        <div class='name'>
+          <h2><%= @policy.name %></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Summary</h3>
+      <%= @policy.summary %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Description</h3>
+      <%= @policy.description %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Organizations</h3>
+      <%= @policy.organization_text %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Resources</h3>
+      <%= @policy.resources_text %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Service and Action Links</h3>
+      <%= @policy.resources_text %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3><%= link_to 'All Policies', admin_policies_path %></h3>
+    </div>
+  </div>
+</div>

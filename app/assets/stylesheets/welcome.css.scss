@@ -1,17 +1,8 @@
 #home-page-hero {
   background: image-url('http://civinomics.files.wordpress.com/2014/01/san-francisco-fly-to-barcelona.jpg') 0% 0%;
   position: relative;
-  height: 100%;
-
-  .darkener {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1;
-  }
+  height: calc(100% - 50px);
+  margin-bottom: 30px;
 
   h1, p {
     color: white;
@@ -29,5 +20,32 @@
 
   a {
     color: white;
+  }
+}
+
+.thumbnail-holder {
+  height: 80px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.policy-preview {
+  margin-bottom: 20px;
+  &:hover {
+    h4 {
+      text-decoration: underline;
+    }
+  }
+
+  .policy-summary {
+    max-height: 80px;
+    overflow: hidden;
+  }
+}
+
+#policies-listing {
+  a {
+    color: #333;
   }
 }

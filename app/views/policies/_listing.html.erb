@@ -1,0 +1,18 @@
+<div class='row' id='policies-listing'>
+  <div class='col-sm-12'>
+    <% policies.each do |policy| %>
+      <%= link_to policy_path policy do %>
+        <div class='col-sm-6 policy-preview'>
+          <div class='row'>
+            <div class='col-sm-2 thumbnail-holder' style='background-image: url(<%= policy.thumbnail_image_url %>)'>
+            </div>
+            <div class='col-sm-10 policy-summary'>
+              <h4><%= policy.name %></h4>
+              <p><%= truncate policy.summary, length: 120 %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

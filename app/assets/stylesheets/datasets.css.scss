@@ -1,0 +1,17 @@
+#data-browser-masthead {
+  background: #333 image-url('san-francisco-city-night.jpg') 50% 50% no-repeat;
+  height: 400px;
+  color: white;
+  margin-bottom: 30px;
+
+  .container {
+    height: 100%;
+    position: relative;
+    z-index: 3;
+  }
+
+  h2 {
+    position: absolute;
+    bottom: 20px;
+  }
+}
