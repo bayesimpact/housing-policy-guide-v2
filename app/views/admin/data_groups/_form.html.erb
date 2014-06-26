@@ -1,19 +1,37 @@
 <div class='form-group'>
-  <%= f.label :parent, class: 'col-sm-2' %>
+  <%= f.label :name, class: 'col-sm-2' %>
   <div class='col-sm-10'>
-    <% @parent_data_groups.each do |data_group| %>
-      <%= f.label :parent_id, data_group.name, value: data_group.id %>
-      <%= f.radio_button :parent_id, data_group.id %>
-      <br/>
-    <% end %>
+    <%= f.text_field :name %>
   </div>
 </div>
+<div class='form-group'>
+    <div class='col-sm-12'>
+      Note: Choose <b>EITHER</b> <br/>a) <b>parent AND datasets</b>, meaning this is a child data group, <br/>- or -<br/>b) <b>child data groups</b>, meaning this is a super group.
+    </div>
+</div>
+
 <div class='form-group'>
   <%= f.label :children, class: 'col-sm-2' %>
   <div class='col-sm-10'>
     <% @data_groups_with_parents.each do |data_group| %>
-      <%= data_group.name %>
-      <br/>
+      <div class='row'>
+        <%= label_tag do %>
+          <%= check_box_tag 'data_group[child_ids][]', data_group.id %>
+          <%= data_group.name %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class='form-group'>
+  <%= f.label :parent, class: 'col-sm-2' %>
+  <div class='col-sm-10'>
+
+    <% @parent_data_groups.each do |data_group| %>
+      <div class='row'>
+        <%= f.radio_button :parent_id, data_group.id %>
+        <%= f.label :parent_id, data_group.name, value: data_group.id %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -21,8 +39,12 @@
   <%= f.label :datasets, class: 'col-sm-2' %>
   <div class='col-sm-10'>
     <% @datasets.each do |dataset| %>
-      <%= dataset.name %>
-      <br/>
+      <div class='row'>
+        <%= label_tag do %>
+          <%= check_box_tag 'data_group[dataset_ids][]', dataset.id %>
+          <%= dataset.name %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

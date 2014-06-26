@@ -1,0 +1,37 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h2><%= @data_group.name %></h2>
+    </div>
+  </div>
+  <% unless @data_group.parent_id.nil? %>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <h3>Parent</h3>
+        <%= link_to @data_group.parent.name, admin_data_group_path(@data_group.parent) %>
+      </div>
+    </div>
+  <% end %>
+  <% if @children.any? %>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <h3>Children</h3>
+        <% @children.each do |child| %>
+          <%= link_to child.name, admin_data_group_path(child) %>
+          <br/>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% if @data_group.datasets.any? %>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <h3>Datasets</h3>
+        <% @data_group.datasets.each do |dataset| %>
+          <%= link_to dataset.name, admin_dataset_path(dataset) %>
+          <br/>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
