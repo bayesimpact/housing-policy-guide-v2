@@ -5,11 +5,14 @@ class Admin::PoliciesController < AdminController
 
   def new
     @policy = Policy.new
+    @data_groups = DataGroup.policy_groups
   end
 
   def create
     policy = Policy.new(policy_params)
+    policy.data_groups = DataGroup.find(params[:policy][:data_group_ids])
     if policy.save
+      flash[:notice] = "Policy '#{@policy.name}' was saved successfully."
       redirect_to :admin_policies
     else
       flash[:errors] = policy.errors
@@ -19,12 +22,15 @@ class Admin::PoliciesController < AdminController
 
   def edit
     @policy = Policy.where(id: params[:id]).first
+    @data_groups = DataGroup.policy_groups
     redirect_to :admin_policies if @policy.nil?
   end
 
   def update
     @policy = Policy.find(params[:id])
-    if @policy.update_attributes(policy_params)
+    @policy.assign_attributes(policy_params)
+    @policy.data_groups = DataGroup.find(params[:policy][:data_group_ids])
+    if @policy.save
       flash[:notice] = "Policy '#{@policy.name}' was updated successfully."
       redirect_to :admin_policy
     else
@@ -34,7 +40,7 @@ class Admin::PoliciesController < AdminController
   end
 
   def show
-    @policy = Policy.find(params[:id])
+    @policy = Policy.includes(:data_groups).find(params[:id])
   end
 
   def destroy

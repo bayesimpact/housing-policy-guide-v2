@@ -8,5 +8,6 @@ class DataGroup < ActiveRecord::Base
   belongs_to :parent, class_name: 'DataGroup'
   has_many :children, class_name: 'DataGroup', foreign_key: 'parent_id'
 
-  scope :with_parents, -> { where('parent_id IS NOT NULL')}
+  scope :policy_groups, -> { where(is_super_group: false)}
+  scope :super_groups, -> { where(is_super_group: true)}
 end

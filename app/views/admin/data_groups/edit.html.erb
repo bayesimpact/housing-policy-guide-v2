@@ -1,0 +1,18 @@
+<div class='container admin'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <%= form_for @data_group, url: admin_data_group_path(@data_group), method: 'PUT', html: { role: 'form', class: 'form-horizontal' } do |f| %>
+        <div class='row'>
+          <div class='col-sm-6'>
+            <%= f.submit 'Update', class: 'btn btn-default btn-large' %>
+          </div>
+          <div class='col-sm-6'>
+            <h3><%= link_to 'All Data Groups', admin_data_groups_path %></h3>
+          </div>
+        </div>
+        <%= render partial: 'form', locals: { f: f, data_group: @data_group } %>
+        <%= f.submit 'Update', class: 'btn btn-default btn-large' %>
+      <% end %>
+    </div>
+  </div>
+</div>

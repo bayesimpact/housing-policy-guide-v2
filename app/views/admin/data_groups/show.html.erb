@@ -1,37 +1,58 @@
+<br/>
 <div class='container'>
   <div class='row'>
-    <div class='col-sm-12'>
-      <h2><%= @data_group.name %></h2>
+    <%= render partial: 'data_group_tree', locals: { data_group_tree: @data_group_tree } %>
+    <div class='col-sm-6'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h2><%= @data_group.name %></h2>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h3><%= @data_group.is_super_group? ? 'Super Group' : 'Policy Group' %></h3>
+        </div>
+      </div>
+      <% unless @data_group.parent_id.nil? %>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <h3>Parent</h3>
+            <%= link_to @data_group.parent.name, admin_data_group_path(@data_group.parent) %>
+          </div>
+        </div>
+      <% end %>
+      <% if @children.any? %>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <h3>Children</h3>
+            <% @children.each do |child| %>
+              <%= link_to child.name, admin_data_group_path(child) %>
+              <br/>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <% if @data_group.datasets.any? %>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <h3>Datasets</h3>
+            <% @data_group.datasets.each do |dataset| %>
+              <%= link_to dataset.name, admin_dataset_path(dataset) %>
+              <br/>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class='row'>
+        <div class='col-sm-12' data-no-turbolink>
+          <h4> <%= link_to 'Edit', edit_admin_data_group_path(@data_group.id) %> | <%= link_to 'Delete', admin_data_group_path(@data_group.id), method: 'Delete' %> </h4>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h4> <%= link_to 'Create a new data group', new_admin_data_group_path %> </h4>
+        </div>
+      </div>
     </div>
   </div>
-  <% unless @data_group.parent_id.nil? %>
-    <div class='row'>
-      <div class='col-sm-12'>
-        <h3>Parent</h3>
-        <%= link_to @data_group.parent.name, admin_data_group_path(@data_group.parent) %>
-      </div>
-    </div>
-  <% end %>
-  <% if @children.any? %>
-    <div class='row'>
-      <div class='col-sm-12'>
-        <h3>Children</h3>
-        <% @children.each do |child| %>
-          <%= link_to child.name, admin_data_group_path(child) %>
-          <br/>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-  <% if @data_group.datasets.any? %>
-    <div class='row'>
-      <div class='col-sm-12'>
-        <h3>Datasets</h3>
-        <% @data_group.datasets.each do |dataset| %>
-          <%= link_to dataset.name, admin_dataset_path(dataset) %>
-          <br/>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
 </div>

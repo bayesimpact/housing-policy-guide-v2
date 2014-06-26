@@ -34,7 +34,7 @@ class DataGroupService
   end
 
   def data_group_parents
-    data_groups - data_groups.with_parents
+    data_groups.where(is_super_group: true)
   end
 
   def tree

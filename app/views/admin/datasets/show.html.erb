@@ -5,6 +5,20 @@
     </div>
   </div>
   <div class='row'>
+    <div class='col-sm-12' data-no-turbolink>
+      <h4> <%= link_to 'Edit', edit_admin_dataset_path(@dataset.id) %> | <%= link_to 'Delete', admin_dataset_path(@dataset.id), method: 'Delete' %> </h4>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Policy data groups:</h3>
+      <% @dataset.data_groups.each do |data_group| %>
+        <%= link_to data_group.name, admin_data_group_path(data_group) %> |
+      <% end %>
+      Edit in the <%= link_to 'Data Groups admin section', admin_data_groups_path %>
+    </div>
+  </div>
+  <div class='row'>
     <div class='col-sm-12'>
       <h3>Source Description</h3>
       <%= @dataset.source_description %>

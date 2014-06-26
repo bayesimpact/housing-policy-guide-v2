@@ -5,46 +5,91 @@
   </div>
 </div>
 <div class='form-group'>
+  <div class='col-sm-12'>
+    <%= f.check_box :is_super_group, checked: data_group.is_super_group?, data: { on_text: 'Super Group', off_text: 'Policy Group' } %>
+  </div>
+</div>
+<div class='form-group'>
     <div class='col-sm-12'>
-      Note: Choose <b>EITHER</b> <br/>a) <b>parent AND datasets</b>, meaning this is a child data group, <br/>- or -<br/>b) <b>child data groups</b>, meaning this is a super group.
+      <br/>
+      a) <b>For a super group</b>, choose policy data groups <br/>- or -<br/> b) <b>For a policy data group</b>, choose a super group AND datasets
+      <br/>
+      **<b>Doing both will only recognize the super group selections.</b>**
+      <br/><br/>
     </div>
 </div>
-
-<div class='form-group'>
-  <%= f.label :children, class: 'col-sm-2' %>
-  <div class='col-sm-10'>
-    <% @data_groups_with_parents.each do |data_group| %>
+<div class='panel-group' id='accordion'>
+  <div class='panel panel-default parent'>
+    <div class='panel-heading'>
       <div class='row'>
-        <%= label_tag do %>
-          <%= check_box_tag 'data_group[child_ids][]', data_group.id %>
-          <%= data_group.name %>
-        <% end %>
+        <div class='col-sm-6'>
+          <h4 class='panel-title'>
+            <a data-toggle='collapse' data-parent='#accordion' href='#collapse-children-selector'>
+              <b>Super group</b>: choose policy data groups
+            </a>
+          </h4>
+        </div>
       </div>
-    <% end %>
+    </div>
+    <div id='collapse-children-selector' class='panel-collapse collapse <%= 'in' if data_group.is_super_group? %>'>
+      <div class='panel-body parent'>
+        <div class='form-group'>
+          <%= f.label :policy_groups, class: 'col-sm-2' %>
+          <div class='col-sm-10'>
+            <% @data_groups.each do |child_data_group| %>
+              <div class='row'>
+                <%= label_tag do %>
+                  <%= check_box_tag 'data_group[child_ids][]', child_data_group.id, child_data_group.parent_id == data_group.id && child_data_group.parent_id != nil %>
+                  <%= child_data_group.name %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='panel-heading'>
+      <div class='row'>
+        <div class='col-sm-6'>
+          <h4 class='panel-title'>
+            <a data-toggle='collapse' data-parent='#accordion' href='#collapse-parent-and-dataset-selector'>
+              <b>Policy data group</b>: choose a super group and datasets
+            </a>
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div id='collapse-parent-and-dataset-selector' class='panel-collapse collapse <%= 'in' if !!data_group.parent_id %>'>
+      <div class='panel-body parent'>
+        <div class='form-group'>
+          <%= f.label :super_groups, class: 'col-sm-2' %>
+          <div class='col-sm-10'>
+            <% @super_data_groups.each do |parent_data_group| %>
+              <div class='row'>
+                <%= f.radio_button :parent_id, parent_data_group.id %>
+                <%= f.label :parent_id, parent_data_group.name, value: parent_data_group.id %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <hr/>
+        <div class='form-group'>
+          <%= f.label :datasets, class: 'col-sm-2' %>
+          <div class='col-sm-10'>
+            <% @datasets.each do |dataset| %>
+              <div class='row'>
+                <%= label_tag do %>
+                  <%= check_box_tag 'data_group[dataset_ids][]', dataset.id, data_group.datasets.include?(dataset) %>
+                  <%= dataset.name %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<div class='form-group'>
-  <%= f.label :parent, class: 'col-sm-2' %>
-  <div class='col-sm-10'>
-
-    <% @parent_data_groups.each do |data_group| %>
-      <div class='row'>
-        <%= f.radio_button :parent_id, data_group.id %>
-        <%= f.label :parent_id, data_group.name, value: data_group.id %>
-      </div>
-    <% end %>
-  </div>
-</div>
-<div class='form-group'>
-  <%= f.label :datasets, class: 'col-sm-2' %>
-  <div class='col-sm-10'>
-    <% @datasets.each do |dataset| %>
-      <div class='row'>
-        <%= label_tag do %>
-          <%= check_box_tag 'data_group[dataset_ids][]', dataset.id %>
-          <%= dataset.name %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<script type='text/javascript'>
+  $("[name='data_group[is_super_group]']:visible").bootstrapSwitch();
+</script>

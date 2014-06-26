@@ -26,6 +26,9 @@
     </div>
   </div>
   <div class='row'>
+    <%= render partial: 'policies/data_viewer', locals: { policy: @policy } %>
+  </div>
+  <div class='row'>
     <div class='col-sm-12'>
       <h3>Organizations</h3>
       <%= @policy.organization_text %>

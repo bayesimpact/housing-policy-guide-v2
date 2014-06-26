@@ -22,12 +22,12 @@ Admin.create({ email: 'niazsouti@gmail.com', password: '12345678' }) if Admin.wh
     })
 end
 
-super_group_1 = DataGroup.create(name: 'Super Group 1')
+super_group_1 = DataGroup.create(name: 'Super Group 1', is_super_group: true)
 ['Group 1', 'Group 2', 'Group 3', 'Group 4'].each do |group_name|
   DataGroup.create(name: group_name, parent: super_group_1)
 end
 
-super_group_2 = DataGroup.create(name: 'Super Group 2')
+super_group_2 = DataGroup.create(name: 'Super Group 2', is_super_group: true)
 ['Group 6', 'Group 7', 'Group 8', 'Group 9'].each do |group_name|
   DataGroup.create(name: group_name, parent: super_group_2)
 end
@@ -42,6 +42,7 @@ end
   })
 end
 
+data_group_without_parents = DataGroup.where(is_super_group: false)
 Dataset.all.each_with_index do |dataset, index|
-  DataGroup.with_parents[index].datasets << dataset
+  data_group_without_parents[index].datasets << dataset
 end

@@ -1,4 +1,9 @@
-<%= @data_groups.each do |data_group| %>
-
-<% end %>
-Create <%= link_to 'a data group', new_admin_data_group_path %>
+<br/>
+<div class='container'>
+  <div class='row'>
+    <%= render partial: 'data_group_tree', locals: { data_group_tree: @data_group_tree } %>
+    <div class='col-sm-6'>
+      <%= link_to 'Create a new data group', new_admin_data_group_path %>
+    </div>
+  </div>
+</div>

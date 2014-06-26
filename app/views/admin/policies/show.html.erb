@@ -1,5 +1,10 @@
 <div class='container'>
   <div class='row'>
+    <div class='col-sm-12' data-no-turbolink>
+      <h4> <%= link_to 'Edit', edit_admin_policy_path(@policy.id) %> | <%= link_to 'Delete', admin_policy_path(@policy.id), method: 'Delete' %> </h4>
+    </div>
+  </div>
+  <div class='row'>
     <div class='col-sm-12'>
       <h4>Masthead:</h4>
       <%= filepicker_image_tag @policy.masthead_image_url %>
@@ -15,11 +20,6 @@
   </div>
   <div class='row'>
     <div class='col-sm-12'>
-
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-sm-12'>
       <h3>Summary</h3>
       <%= @policy.summary %>
     </div>
@@ -29,6 +29,9 @@
       <h3>Description</h3>
       <%= @policy.description %>
     </div>
+  </div>
+  <div class='row'>
+    <%= render partial: 'policies/data_viewer', locals: { policy: @policy } %>
   </div>
   <div class='row'>
     <div class='col-sm-12'>

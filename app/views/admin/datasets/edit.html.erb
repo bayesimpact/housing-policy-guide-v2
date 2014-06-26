@@ -3,7 +3,7 @@
     <div class='col-sm-12'>
       <%= form_for @dataset, url: admin_dataset_path(@dataset.id), method: 'PUT', html: { role: 'form', class: 'form-horizontal' } do |f| %>
         <%= render partial: 'form', locals: { f: f, dataset: @dataset } %>
-        <%= f.submit 'Create', class: 'btn btn-default' %>
+        <%= f.submit 'Update', class: 'btn btn-default' %>
       <% end %>
     </div>
   </div>

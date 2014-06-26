@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-sm-12'>
       <%= form_for @policy, url: admin_policy_path(@policy.id), method: 'PUT', html: { role: 'form', class: 'form-horizontal' } do |f| %>
-        <%= render partial: 'form', locals: { f: f, policy: @policy } %>
+        <%= render partial: 'form', locals: { f: f, policy: @policy, data_groups: @data_groups } %>
         <%= f.submit 'Save', class: 'btn btn-default' %>
       <% end %>
     </div>
