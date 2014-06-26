@@ -21,13 +21,13 @@
   <div class='row'>
     <div class='col-sm-12'>
       <h3>Summary</h3>
-      <%= @policy.summary %>
+      <%= @policy.summary.html_safe %>
     </div>
   </div>
   <div class='row'>
     <div class='col-sm-12'>
       <h3>Description</h3>
-      <%= @policy.description %>
+      <%= @policy.description.html_safe %>
     </div>
   </div>
   <div class='row'>
@@ -36,13 +36,13 @@
   <div class='row'>
     <div class='col-sm-12'>
       <h3>Organization Text</h3>
-      <%= @policy.organization_text %>
+      <%= @policy.organization_text.html_safe %>
     </div>
   </div>
   <div class='row'>
     <div class='col-sm-12'>
       <h3>Resource Text</h3>
-      <%= @policy.resources_text %>
+      <%= @policy.resources_text.html_safe %>
     </div>
   </div>
   <br/>

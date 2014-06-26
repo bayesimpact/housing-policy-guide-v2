@@ -30,10 +30,10 @@
       </div>
       <div class='row'>
         <div class='col-sm-12'>
-          <%= policy.data_groups.first.datasets.first.source_description %>
+          <%= policy.data_groups.first.datasets.first.source_description.html_safe %>
         </div>
         <div class='col-sm-12'>
-          <%= policy.data_groups.first.datasets.first.notes %>
+          <%= policy.data_groups.first.datasets.first.notes.html_safe %>
         </div>
       </div>
     </div>
