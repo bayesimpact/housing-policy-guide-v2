@@ -7,29 +7,46 @@
 <div class='container'>
   <div class='row'>
     <div class='col-sm-3'>
-      <% @data_groups.each do |data_group| %>
-        <button type='button'>
-          <%= data_group.name %>
-        </button>
-        <% if !data_group.datasets.nil? %>
-          <ul>
-            <% data_group.datasets.each do |dataset| %>
-              <li><%= dataset.name %></li>
-            <% end %>
-          </ul>
-        <% else %>
-          <% data_group.children.each do |child_data_group| %>
-            <button type='button'>
-              <%= child_data_group.name %>
-            </button>
-            <ul>
-              <% child_data_group.datasets.each do |dataset| %>
-                <li><%= dataset.name %></li>
-              <% end %>
-            </ul>
-          <% end %>
+      <div class='panel-group' id='data-group-accordion'>
+        <% @data_group_tree.each_with_index do |parent_data_group, parent_index| %>
+          <div class='panel panel-default parent'>
+            <div class='panel-heading'>
+              <h4 class='panel-title'>
+                <a data-toggle='collapse' data-parent='#data-group-accordion' href='#collapse-<%= parent_index %>'>
+                  <%= parent_data_group[:element].name %>
+                </a>
+              </h4>
+            </div>
+            <div id='collapse-<%= parent_index %>' class='panel-collapse collapse <%= 'in' if parent_index == 0 %>'>
+              <div class='panel-body parent'>
+                <div class='panel-group' id='data-panel-subgroup-<%= parent_index %>'>
+                  <% parent_data_group[:children].each_with_index do |child_data_group, child_index| %>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading child'>
+                        <h6 class='panel-title'>
+                          <a data-toggle='collapse' href='#collapse-<%= "#{parent_index}-#{child_index}" %>'>
+                            <%= child_data_group[:element].name %>
+                          </a>
+                        </h6>
+                      </div>
+                    </div>
+                    <div id='collapse-<%= "#{parent_index}-#{child_index}" %>' class='panel-collapse collapse <%= 'in' if child_index == 0 %>' data-parent='#data-panel-subgroup-<%= parent_index %>'>
+                      <ul>
+                        <% child_data_group[:children].each do |dataset| %>
+                          <li><%= dataset.name %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
-      <% end %>
+      </div>
+    </div>
+    <div class='col-sm-9' id='data-browser'>
+      <%= @data_group_tree.first[:children].first[:children].first.visualization_iframe.html_safe %>
     </div>
   </div>
 </div>

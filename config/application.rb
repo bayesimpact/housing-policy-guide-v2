@@ -21,5 +21,6 @@ module HousingPolicyGuide
     # config.i18n.default_locale = :de
 
     config.filepicker_rails.api_key = "Ad79HqFIeTW2DyOjsZ5Uiz"
+    config.autoload_paths += Dir["#{HousingPolicyGuide::Application.config.root}/app/services"]
   end
 end

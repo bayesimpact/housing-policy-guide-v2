@@ -1,5 +1,5 @@
 class DatasetsController < ApplicationController
   def index
-    @data_groups = DataGroup.all.includes(:datasets)
+    @data_group_tree = DataGroupService.new(DataGroup.all.includes(:datasets)).tree
   end
 end
