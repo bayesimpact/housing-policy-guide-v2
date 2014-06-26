@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Admin.create({ email: 'hong.nick@gmail.com', password: '12345678' }) if Admin.where(email: 'hong.nick@gmail.com').first.nil?
+Admin.create({ email: 'joy.bonaguro@gmail.com', password: '12345678' }) if Admin.where(email: 'hong.nick@gmail.com').first.nil?
+Admin.create({ email: 'niazsouti@gmail.com', password: '12345678' }) if Admin.where(email: 'hong.nick@gmail.com').first.nil?
 
 ['Policy #1', 'Policy #2', 'Policy #3', 'Policy #4'].each do |policy_name|
   Policy.create({
