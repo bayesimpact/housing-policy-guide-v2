@@ -45,8 +45,10 @@
         <% end %>
       </div>
     </div>
-    <div class='col-sm-9' id='data-browser'>
-      <%= @data_group_tree.first[:children].first[:children].first.visualization_iframe.html_safe %>
-    </div>
+    <% if @data_group_tree.first[:children].first[:children].first %>
+      <div class='col-sm-9' id='data-browser'>
+        <%= @data_group_tree.first[:children].first[:children].first.visualization_iframe.html_safe %>
+      </div>
+    <% end %>
   </div>
 </div>
