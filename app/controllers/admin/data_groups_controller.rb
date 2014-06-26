@@ -12,7 +12,7 @@ class Admin::DataGroupsController < ApplicationController
 
   def create
     data_group = DataGroup.new(data_group_params)
-    if data_group_params[:is_super_group]
+    if data_group_params[:is_super_group] != "0"
       data_group.children = DataGroup.find(params[:data_group][:child_ids]) if params[:data_group][:child_ids]
     else
       data_group.datasets = Dataset.find(params[:data_group][:dataset_ids]) if params[:data_group][:dataset_ids]
@@ -41,7 +41,7 @@ class Admin::DataGroupsController < ApplicationController
 
   def update
     data_group = DataGroup.find(params[:id])
-    if data_group_params[:is_super_group]
+    if data_group_params[:is_super_group] != "0"
       data_group.children = DataGroup.find(params[:data_group][:child_ids]) if params[:data_group][:child_ids]
     else
       data_group.datasets = Dataset.find(params[:data_group][:dataset_ids]) if params[:data_group][:dataset_ids]
