@@ -21,19 +21,21 @@
       <% end %>
     </div>
   </div>
-  <div class='col-sm-10'>
-    <div class='row'>
-      <div class='col-sm-12'>
-        <%= policy.data_groups.first.datasets.first.visualization_iframe.html_safe %>
+  <% if policy.data_groups.first.datasets.first %>
+    <div class='col-sm-10'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <%= policy.data_groups.first.datasets.first.visualization_iframe.html_safe %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <%= policy.data_groups.first.datasets.first.source_description %>
+        </div>
+        <div class='col-sm-12'>
+          <%= policy.data_groups.first.datasets.first.notes %>
+        </div>
       </div>
     </div>
-    <div class='row'>
-      <div class='col-sm-12'>
-        <%= policy.data_groups.first.datasets.first.source_description %>
-      </div>
-      <div class='col-sm-12'>
-        <%= policy.data_groups.first.datasets.first.notes %>
-      </div>
-    </div>
-  </div>
+  <% end %>
 <% end %>
