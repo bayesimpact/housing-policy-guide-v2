@@ -1,6 +1,7 @@
 class Admin::DataGroupsController < ApplicationController
   def index
     @data_group_tree = DataGroupService.new(DataGroup.all.includes(:datasets)).tree
+    @data_groups = DataGroup.all
   end
 
   def new

@@ -13,7 +13,7 @@
           <h3><%= @data_group.is_super_group? ? 'Super Group' : 'Policy Group' %></h3>
         </div>
       </div>
-      <% unless @data_group.parent_id.nil? %>
+      <% unless @data_group.parent.nil? %>
         <div class='row'>
           <div class='col-sm-12'>
             <h3>Parent</h3>
@@ -51,6 +51,11 @@
       <div class='row'>
         <div class='col-sm-12'>
           <h4> <%= link_to 'Create a new data group', new_admin_data_group_path %> </h4>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h4> <%= link_to 'Show all data groups', admin_data_groups_path %> </h4>
         </div>
       </div>
     </div>

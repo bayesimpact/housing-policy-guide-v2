@@ -3,6 +3,22 @@
   <div class='row'>
     <%= render partial: 'data_group_tree', locals: { data_group_tree: @data_group_tree } %>
     <div class='col-sm-6'>
+      <% @data_groups.each do |data_group| %>
+        <div class='row'>
+          <div class='col-sm-6'>
+            <%= link_to data_group.name, admin_data_group_path(data_group) %>
+          </div>
+          <div class='col-sm-2'>
+            <%= data_group.is_super_group? ? 'Super' : 'Policy' %>
+          </div>
+          <div class='col-sm-4'>
+            <%= link_to 'Show', admin_data_group_path(data_group) %> |
+            <%= link_to 'Edit', edit_admin_data_group_path(data_group) %> |
+            <%= link_to 'Delete', admin_data_group_path(data_group), method: 'Delete' %>
+          </div>
+        </div>
+      <% end %>
+      <br/>
       <%= link_to 'Create a new data group', new_admin_data_group_path %>
     </div>
   </div>
