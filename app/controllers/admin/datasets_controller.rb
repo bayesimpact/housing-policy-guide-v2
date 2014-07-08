@@ -1,4 +1,4 @@
-class Admin::DatasetsController < ApplicationController
+class Admin::DatasetsController < AdminController
   def index
     @resources = Dataset.all
   end
