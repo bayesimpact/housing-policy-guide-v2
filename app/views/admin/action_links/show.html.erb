@@ -1,0 +1,32 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12' data-no-turbolink>
+      <h4>
+        <%= link_to 'Edit', edit_admin_action_link_path(@action_link) %> | <%= link_to 'Delete', admin_action_link_path(@action_link), method: 'Delete' %>
+      </h4>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Description</h3>
+      <%= @action_link.description.html_safe %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Policy</h3>
+      <%= @action_link.policy.try(:name) %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Url</h3>
+      <%= link_to @action_link.url, @action_link.url %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3><%= link_to 'All Action Links', admin_action_links_path %></h3>
+    </div>
+  </div>
+</div>

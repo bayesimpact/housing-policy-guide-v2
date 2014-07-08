@@ -42,6 +42,15 @@ end
   })
 end
 
+['Action Link #1', 'Action Link #2', 'Action Link #3'].each do |action_link_name|
+  ActionLink.create({
+    name: action_link_name,
+    description: 'There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.<br/>
+      Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.',
+    url: 'https://data.sfgov.org/'
+  })
+end
+
 data_group_without_parents = DataGroup.where(is_super_group: false)
 Dataset.all.each_with_index do |dataset, index|
   data_group_without_parents[index].datasets << dataset
