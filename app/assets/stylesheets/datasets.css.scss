@@ -20,6 +20,12 @@
   height: 640px;
   border: 1px solid #ccc;
   background: image-url('loading.gif');
+
+  .cached-visualizations {
+    div {
+      display: none;
+    }
+  }
 }
 
 #data-group-accordion {
@@ -48,5 +54,10 @@
 
   li {
     margin-top: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: orange;
+    }
   }
 }

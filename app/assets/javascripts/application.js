@@ -15,4 +15,8 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-switch
+//= require lodash
 //= require_tree .
+//= require_self
+
+hp = { cachedVisualizations: [] }
