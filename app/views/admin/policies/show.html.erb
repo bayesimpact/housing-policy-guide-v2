@@ -45,6 +45,23 @@
       <%= @policy.resources_text.html_safe %>
     </div>
   </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Action Links</h3>
+      <% @policy.action_links.each do |link| %>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <%= link_to link.name, link.url %>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <%= link.description %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <br/>
   <div class='row'>
     <div class='col-sm-12' data-no-turbolink>

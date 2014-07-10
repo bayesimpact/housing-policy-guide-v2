@@ -14,8 +14,11 @@
   </div>
   <div class='row'>
     <div class='col-sm-12'>
-      <h3>Policy</h3>
-      <%= @action_link.policy.try(:name) %>
+      <h3>Policies</h3>
+      <% @action_link.policies.each do |policy| %>
+      <%= policy.try(:name) %>
+      <br/>
+      <% end %>
     </div>
   </div>
   <div class='row'>

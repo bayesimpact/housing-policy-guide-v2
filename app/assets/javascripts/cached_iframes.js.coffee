@@ -1,12 +1,12 @@
 $.ajax
-    url: 'data'
+    url: '/data'
     dataType: 'json'
     error: (jqXHR, textStatus, errorThrown) ->
         $('body').append "AJAX Error: #{textStatus}"
     success: (data, textStatus, jqXHR) ->
         cacheVisualizations(data)
 
-cacheVisualizations = (data) -> 
+cacheVisualizations = (data) ->
     _(data).forEach (datum) ->
         visualization = datum.visualization_iframe
         visualizationDiv = $('<div>');

@@ -42,6 +42,6 @@ class Admin::ActionLinksController < AdminController
   private
 
   def action_link_params
-    params.require(:action_link).permit(:name, :description, :url, :policy_id)
+    params.require(:action_link).permit(:name, :description, :url, policy_ids: [])
   end
 end

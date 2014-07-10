@@ -2,13 +2,17 @@
   <div class='row'>
     <table class='table'>
       <th>Name</th>
-      <th>Policy</th>
+      <th>Policies</th>
       <th>Url</th>
       <th>Description</th>
       <% @resources.each do |resource| %>
         <tr>
           <td><%= truncate resource.name %></td>
-          <td><%= truncate resource.policy.try(:name), length: 60 %></td>
+          <td>
+            <% resource.policies.each do |policy| %>
+              <%= truncate policy.try(:name), length: 60 %>
+            <% end %>
+          </td>
           <td><%= link_to resource.url, resource.url  %></td>
           <td><%= truncate resource.description, length: 60  %></td>
           <td data-no-turbolink>

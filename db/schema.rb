@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626062645) do
+ActiveRecord::Schema.define(version: 20140710030856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "action_links", force: true do |t|
-    t.integer  "policy_id"
     t.string   "url",         null: false
     t.string   "name",        null: false
     t.text     "description"
@@ -92,6 +91,13 @@ ActiveRecord::Schema.define(version: 20140626062645) do
     t.datetime "updated_at"
     t.string   "thumbnail_image_url"
     t.string   "masthead_image_url"
+  end
+
+  create_table "policy_action_links", force: true do |t|
+    t.integer  "policy_id",      null: false
+    t.integer  "action_link_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
