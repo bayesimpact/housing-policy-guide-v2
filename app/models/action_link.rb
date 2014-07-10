@@ -1,3 +1,3 @@
 class ActionLink < ActiveRecord::Base
-  belongs_to :policies
+  belongs_to :policy
 end

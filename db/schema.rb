@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 20140626062645) do
 
   create_table "action_links", force: true do |t|
     t.integer  "policy_id"
+    t.string   "url",         null: false
+    t.string   "name",        null: false
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -44,7 +44,18 @@
   <div class='row'>
     <div class='col-sm-12'>
       <h3>Service and Action Links</h3>
-      <%= @policy.resources_text.html_safe %>
+      <% @policy.action_links.each do |action_link| %>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <h4><%= link_to action_link.name.html_safe, action_link.url %></h4>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <%= action_link.description.html_safe %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class='row'>

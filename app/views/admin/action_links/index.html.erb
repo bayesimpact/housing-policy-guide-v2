@@ -1,0 +1,24 @@
+<div class='container'>
+  <div class='row'>
+    <table class='table'>
+      <th>Name</th>
+      <th>Policy</th>
+      <th>Url</th>
+      <th>Description</th>
+      <% @resources.each do |resource| %>
+        <tr>
+          <td><%= truncate resource.name %></td>
+          <td><%= truncate resource.policy.try(:name), length: 60 %></td>
+          <td><%= link_to resource.url, resource.url  %></td>
+          <td><%= truncate resource.description, length: 60  %></td>
+          <td data-no-turbolink>
+            <%= link_to 'Details', admin_action_link_path(resource.id) %>
+            <%= link_to 'Edit', edit_admin_action_link_path(resource.id) %>
+            <%= link_to 'Delete', admin_action_link_path(resource.id), method: 'Delete' %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    Create <%= link_to 'an action link', new_admin_action_link_path %>.
+  </div>
+</div>

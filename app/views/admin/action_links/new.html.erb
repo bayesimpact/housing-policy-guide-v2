@@ -1,0 +1,10 @@
+<div class='container admin'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <%= form_for @action_link, url: admin_action_links_path, html: { role: 'form', class: 'form-horizontal' } do |f| %>
+        <%= render partial: 'form', locals: { f: f, action_link: @action_link } %>
+        <%= f.submit 'Create', class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  </div>
+</div>
