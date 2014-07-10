@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'ready page:load', ->
     $('#data-group-accordion').find('li').on 'click', -> 
         dataUrl = $(this).data('dataset-url')
         dataId = $(this).data('dataset-id')
