@@ -33,7 +33,7 @@
                     <div id='collapse-<%= "#{parent_index}-#{child_index}" %>' class='panel-collapse collapse <%= 'in' if child_index == 0 %>' data-parent='#data-panel-subgroup-<%= parent_index %>'>
                       <ul>
                         <% child_data_group[:children].each do |dataset| %>
-                          <li data-dataset-id="<%= dataset.id %>" data-dataset-url="<%= dataset.visualization_iframe %>"><%= dataset.name %></li>
+                          <li data-dataset-id="<%= dataset.id %>"><%= dataset.name %></li>
                         <% end %>
                       </ul>
                     </div>
@@ -49,23 +49,27 @@
       <div class='col-sm-9' id='data-browser'>
         <div class='row'>
           <div class='col-sm-12'>
-            <div class='visualization'>
+            <div class='visualization uncached-visualization'>
               <%= @data_group_tree.first[:children].first[:children].first.visualization_iframe.html_safe %>
             </div>
             <div class='cached-visualizations'></div>
         </div>
         <div class='row'>
           <div class='col-sm-12'>
-            <%= @data_group_tree.first[:children].first[:children].first.source_description.html_safe %>
+            <p class='description'>
+              <%= @data_group_tree.first[:children].first[:children].first.source_description.html_safe %>
+            </p>
           </div>
         </div>
         <div class='row'>
           <div class='col-sm-12'>
-            <%= @data_group_tree.first[:children].first[:children].first.notes.html_safe %>
+            <p class='notes'>
+              <%= @data_group_tree.first[:children].first[:children].first.notes.html_safe %>
+            </p>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-<%= javascript_include_tag "cached_iframes.js", :async => true %> 
+<%= javascript_include_tag "visualization_loader.js", :async => true %> 

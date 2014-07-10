@@ -16,7 +16,7 @@
 //= require bootstrap
 //= require bootstrap-switch
 //= require lodash
-//= require_tree .
 //= require_self
+//= require_tree .
 
 hp = { cachedVisualizations: [] }
