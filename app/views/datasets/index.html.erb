@@ -33,7 +33,7 @@
                     <div id='collapse-<%= "#{parent_index}-#{child_index}" %>' class='panel-collapse collapse <%= 'in' if child_index == 0 %>' data-parent='#data-panel-subgroup-<%= parent_index %>'>
                       <ul>
                         <% child_data_group[:children].each do |dataset| %>
-                          <li data-dataset-id="<%= dataset.id %>" data-dataset-url="<%= dataset.visualization_iframe %>"><%= dataset.name %></li>
+                          <li data-datagroup-dataset-id="<%= "#{dataset.id}-#{child_data_group[:element].id}" %>" data-dataset-url="<%= dataset.visualization_iframe %>"><%= dataset.name %></li>
                         <% end %>
                       </ul>
                     </div>
@@ -51,7 +51,7 @@
         <% @data_group_tree.each do |parent| %>
           <% parent[:children].each do |child| %>
             <% child[:children].each do |dataset| %>
-              <%= render partial: 'visualization', locals: { dataset: dataset } %>
+              <%= render partial: 'visualization', locals: { dataset: dataset, child_data_group: child } %>
             <% end %>
           <% end %>
         <% end %>

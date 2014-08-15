@@ -1,4 +1,4 @@
-<div class='row hidden' data-dataset-visualization-id=<%= dataset.id %>>
+<div class='row hidden' data-datagroup-dataset-visualization-id=<%= "#{dataset.id}-#{child_data_group[:element].id}" %>>
   <div class='col-sm-12'>
     <div class='visualization'>
       <%= dataset.visualization_iframe.html_safe %>
