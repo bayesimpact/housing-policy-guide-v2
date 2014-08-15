@@ -17,15 +17,8 @@
 }
 
 #data-browser {
-  height: 640px;
   border: 1px solid #ccc;
-  background: image-url('loading.gif');
-
-  .cached-visualizations {
-    div {
-      display: none;
-    }
-  }
+  position: relative;
 }
 
 #data-group-accordion {
@@ -59,5 +52,25 @@
     &:hover {
       color: orange;
     }
+  }
+}
+
+#loading {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 500px;
+  background: image-url('loading.gif') no-repeat;
+}
+
+.visualization {
+  padding: 30px;
+
+  .description {
+    margin: 15px 0;
+  }
+
+  .notes {
+    margin: 15px 0;
   }
 }

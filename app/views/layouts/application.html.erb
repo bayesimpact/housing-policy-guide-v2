@@ -14,8 +14,11 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      <footer>
+        <%= render 'layouts/footer' %>
+      </footer>
     </main>
   </body>
 </html>

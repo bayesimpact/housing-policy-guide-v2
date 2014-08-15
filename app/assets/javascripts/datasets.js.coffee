@@ -8,11 +8,11 @@ bindDataAccordion = ->
       showCachedVisualization(dataId)
       $('.visualization').hide();
     else
-      $('.visualization').html(content)
+      $('.visualization').html(content);
 
 showCachedVisualization = (dataId) ->
   $('.cached-visualizations').children().hide();
-  $('.cached-visualizations').find("[data-dataset-id='" + dataId + "']").first().show()
+  $('.cached-visualizations').find("[data-dataset-id='" + dataId + "']").first().show();
 
 $ ->
-  bindDataAccordion()
+  bindDataAccordion();
