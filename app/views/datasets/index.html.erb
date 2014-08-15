@@ -4,7 +4,7 @@
     <h2>Data Browser</h2>
   </div>
 </div>
-<div class='container'>
+<div class='container clearfix'>
   <div class='row'>
     <div class='col-sm-3'>
       <div class='panel-group' id='data-group-accordion'>
@@ -47,25 +47,16 @@
     </div>
     <% if @data_group_tree.first[:children].first[:children].first %>
       <div class='col-sm-9' id='data-browser'>
-        <div class='row'>
-          <div class='col-sm-12'>
-            <div class='visualization'>
-              <%= @data_group_tree.first[:children].first[:children].first.visualization_iframe.html_safe %>
-            </div>
-            <div class='cached-visualizations'></div>
-        </div>
-        <div class='row'>
-          <div class='col-sm-12'>
-            <%= @data_group_tree.first[:children].first[:children].first.source_description.html_safe %>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-sm-12'>
-            <%= @data_group_tree.first[:children].first[:children].first.notes.html_safe %>
-          </div>
-        </div>
+        <div id='loading'></div>
+        <% @data_group_tree.each do |parent| %>
+          <% parent[:children].each do |child| %>
+            <% child[:children].each do |dataset| %>
+              <%= render partial: 'visualization', locals: { dataset: dataset } %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
 </div>
-<%= javascript_include_tag "cached_iframes.js", :async => true %> 
+<%= javascript_include_tag "cached_iframes.js", :async => true %>

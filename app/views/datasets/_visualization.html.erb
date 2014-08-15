@@ -1,0 +1,17 @@
+<div class='row hidden' data-dataset-visualization-id=<%= dataset.id %>>
+  <div class='col-sm-12'>
+    <div class='visualization'>
+      <%= dataset.visualization_iframe.html_safe %>
+      <div class='row'>
+        <div class='col-sm-12 description'>
+          <%= dataset.source_description.html_safe %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-sm-12 notes'>
+          <%= dataset.notes.html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,7 @@
-$.ajax
-  url: '/data'
-  dataType: 'json'
-  error: (jqXHR, textStatus, errorThrown) ->
-      $('body').append "AJAX Error: #{textStatus}"
-  success: (data, textStatus, jqXHR) ->
-      cacheVisualizations(data)
-
-cacheVisualizations = (data) ->
-  _(data).forEach (datum) ->
-    visualization = datum.visualization_iframe
-    visualizationDiv = $('<div>');
-    visualizationDiv.attr('data-dataset-id', datum.id)
-    visualizationDiv.html(decodeURI(visualization))
-    $('.cached-visualizations').append(visualizationDiv)
-    window.hp.cachedVisualizations.push(datum.id)
+$ ->
+  $('#loading').addClass('hidden')
+  $('[data-dataset-visualization-id]').first().removeClass('hidden')
+  $(document).on 'click', '[data-dataset-id]', (event) ->
+    datasetId = $(event.currentTarget).data('dataset-id')
+    $('[data-dataset-visualization-id]').addClass('hidden')
+    $("[data-dataset-visualization-id='" + datasetId + "']").removeClass('hidden')
