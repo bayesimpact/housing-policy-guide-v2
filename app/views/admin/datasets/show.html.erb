@@ -42,6 +42,12 @@
       <%= @dataset.visualization_iframe %>
     </div>
   </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3>Chart Title</h3>
+      <%= @dataset.chart_title.html_safe %>
+    </div>
+  </div>
   <%= @dataset.visualization_iframe.html_safe if @dataset.visualization_iframe %>
   <div class='row'>
     <div class='col-sm-12' data-no-turbolink>

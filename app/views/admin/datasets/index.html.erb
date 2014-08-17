@@ -3,6 +3,7 @@
     <div class='row'>
       <table class='table'>
         <th>Name</th>
+        <th>Chart Title</th>
         <th>Source Description</th>
         <th>Notes</th>
         <th>Visualization iFrame</th>
@@ -11,6 +12,7 @@
         <% @resources.each do |resource| %>
           <tr>
             <td><%= truncate resource.name %></td>
+            <td><%= truncate resource.chart_title %></td>
             <td><%= truncate resource.source_description, length: 60 %></td>
             <td><%= truncate resource.notes, length: 60  %></td>
             <td><%= truncate resource.visualization_iframe, length: 60  %></td>

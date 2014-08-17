@@ -1,6 +1,13 @@
 <div class='row hidden' data-datagroup-dataset-visualization-id=<%= "#{dataset.id}-#{child_data_group[:element].id}" %>>
   <div class='col-sm-12'>
     <div class='visualization'>
+      <% if dataset.chart_title.present? %>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <h3><%= dataset.chart_title.try(:html_safe) %></h3>
+          </div>
+        </div>
+      <% end %>
       <%= dataset.visualization_iframe.html_safe %>
       <div class='row'>
         <div class='col-sm-12 description'>

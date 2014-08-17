@@ -51,6 +51,6 @@ class Admin::DatasetsController < AdminController
   private
 
   def dataset_params
-    params.require(:dataset).permit(:name, :notes, :source_description, :source_url, :visualization_iframe)
+    params.require(:dataset).permit(:name, :chart_title, :notes, :source_description, :source_url, :visualization_iframe)
   end
 end
